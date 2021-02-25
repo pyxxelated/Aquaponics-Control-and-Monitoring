@@ -1,6 +1,7 @@
 import React from  'react';
 import {View, Text, StyleSheet} from 'react-native';
-
+//import firebase from '@react-native-firebase/app';
+//import database from '@react-native-firebase/database';
 
 const styles = StyleSheet.create({
     container: {

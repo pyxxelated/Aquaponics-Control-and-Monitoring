@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     }
   }); 
 
-  Tab1 = () =>
+  Tab2 = () =>
   <View style ={styles.container}>
       <Text style={styles.title}>Analytics</Text>
   </View>

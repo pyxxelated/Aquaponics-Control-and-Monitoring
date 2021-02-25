@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "439701072296",
+    "firebase_url": "https://smart-aquaponics-dc100-default-rtdb.firebaseio.com",
+    "project_id": "smart-aquaponics-dc100",
+    "storage_bucket": "smart-aquaponics-dc100.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439701072296:android:407ef72228b29c958b959d",
+        "android_client_info": {
+          "package_name": "com.finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439701072296-jv5h48aocb16uje93knn9d7ouaa90stl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3nZ7iAwvDbFn9w00pg_8BHhKHhkBelX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439701072296-jv5h48aocb16uje93knn9d7ouaa90stl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
