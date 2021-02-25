@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import Home from './screens/home';
 import Monitoring from './screens/monitoring';
 
-import Tab1 from './tabs/tab1';
-import Tab2 from './tabs/tab2';
+//import Tab1 from './tabs/tab1';
+//import Tab2 from './tabs/tab2';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';

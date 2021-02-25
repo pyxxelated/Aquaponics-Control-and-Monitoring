@@ -1,7 +1,7 @@
 // import * as React from 'react';
 import React, {Component} from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
-import { monitoring } from '../screen';
+//import { monitoring } from '../screen';
 
 const styles = StyleSheet.create({
     container: {
