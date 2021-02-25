@@ -1,30 +1,44 @@
 import React, {Component} from 'react';
 import Home from './screens/home';
-import Monitoring from './screens/monitoring';
+//import Monitoring from './screens/monitoring';
+import Tab1 from './tabs/tab';
+import Tab2 from './tabs/tab2';
 
-//import Tab1 from './tabs/tab1';
-//import Tab2 from './tabs/tab2';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {createMaterialTopTabNavigator, MaterialTopTabView} from '@react-navigation/material-top-tabs';
 
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 
+
+ const HomeStack = () => ( 
+    <Stack.Navigator>
+      <Stack.Screen name="Aquaponics" component={Home}/>
+      {/* //<Stack.Screen name="Monitoring" component={Monitoring} /> */}
+      <Stack.Screen name="Monitoring" component={TopTabs}/>
+    </Stack.Navigator>
+ )
+  
+ const TopTabs =() => {
+    return(
+    <Tab.Navigator>
+        <Tab.Screen name="RealTime Data" component={Tab1}/>
+        <Tab.Screen name="Analytics" component={Tab2}/>
+    </Tab.Navigator>
+    );
+ }
+
+
+
 export default class App extends Component {
 render (){
-
-  createHomeStack = () =>
-    <Stack.Navigator>
-      <Stack.Screen name="Index" component={Home}/>
-      <Stack.Screen name="Monitoring" component={Monitoring} />
-    </Stack.Navigator>
-
-
     return(
-          <Home/>
+      <NavigationContainer>
+      <HomeStack/>
+      </NavigationContainer>
     );
   }
 }

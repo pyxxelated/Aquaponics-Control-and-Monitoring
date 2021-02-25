@@ -20,8 +20,8 @@ class Home extends Component {
     render(){ 
           return (
             <View style={styles.container}>
-            <Text style={styles.title}>Aquaponics</Text>
-            <Button title='Monitoring' onPress={() => this.props.navigation.navigate('Home')}/>
+            {/* <Button title='Feed Fish' onPress={() => alert('Done')}/> */}
+            <Button title='Monitoring' onPress={() => this.props.navigation.navigate('Monitoring')}/>
             </View>
           );
     }

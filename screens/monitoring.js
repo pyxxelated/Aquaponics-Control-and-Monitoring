@@ -20,7 +20,6 @@ class Monitoring extends Component {
     render(){
         return(
             <View style={styles.container}>
-                <Text style={styles.title}>Aquaponics</Text>
                 <Button title='Realtime Data' onPress={() => {}}/>
                 <Button title='Analytics' onPress={() => {}}/>
             </View>
