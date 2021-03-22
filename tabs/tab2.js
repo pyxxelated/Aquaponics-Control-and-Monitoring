@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
       <Text style={styles.title}>Analytics</Text>
   </View>
 
-  export default Tab1;
+  export default Tab2;

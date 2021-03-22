@@ -22,6 +22,7 @@ class Home extends Component {
             <View style={styles.container}>
             {/* <Button title='Feed Fish' onPress={() => alert('Done')}/> */}
             <Button title='Monitoring' onPress={() => this.props.navigation.navigate('Monitoring')}/>
+            {/* <Button title='Add' onPress={() => this.props.navigation.navigate('AddData')}/> */}
             </View>
           );
     }
