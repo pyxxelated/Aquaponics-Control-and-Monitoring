@@ -14,20 +14,3 @@ export const config = {
         measurementId: "G-GSBY3SVL5D"
       };
       
-
-            // other examples
-            // export default !firebase.apps.length 
-            // ? firebase.initializeApp(config).database()
-            //  : firebase.app().database()
-
-    // other examples
-    // export{ firebase , database};
-    // function firebase(){
-    //     return <App/>
-    // }
-    // export default firebase;
-
-    
-// other examples
-//     const app = firebase.initializeApp(firebaseConfig);
-// export const db = app.database();

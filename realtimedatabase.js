@@ -1,57 +1,40 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, FlatList, SafeAreaView} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, Modal, TouchableOpacity} from 'react-native';
 import * as firebase from 'firebase'
-
-
-
-// const styles = StyleSheet.create({
-//     container: {
-//       flex: 1,
-//       backgroundColor: '#fff',
-//       alignItems: 'center',
-//       justifyContent: 'center',
-//     },
-//     title: {
-//       fontSize: 25,
-//       fontWeight: 'bold',
-//     }
-//   }); 
+import { ScrollView } from 'react-native-gesture-handler';
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    title: {
-            fontSize: 25,
+          title: {
+            fontSize: 30,
             fontWeight: 'bold',
+            color: "rgb(63, 112, 177)",
+            alignContent: 'center',
+            fontFamily: 'serif'
           },
-    parentView: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: 22,
-    },
-    flatList: {
-      width: '100%',
-    },
-    listText: {
-      color: 'white',
-    },
-    listItem: {
-      flex: 1,
-      marginRight: 20,
-      marginLeft: 20,
-      marginTop: 10,
-      backgroundColor: '#776677',
-      padding: 10,
-      borderRadius: 5,
-    },
-  });
- 
- 
+          text:{
+            textAlign: 'center',
+            fontSize: 17,
+            alignContent: 'center',
+            fontFamily: 'serif',
+            color: "rgb(63, 112, 177)",
+          },
+          container: {
+            flex: 1,
+            justifyContent: "space-around",
+            backgroundColor: "rgb(208,220,224)",
+            alignItems: 'center',
+          },
+          top: {
+            backgroundColor: "rgb(185, 198, 210)",
+            width: '80%',
+            height: 75,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 10,
+          },
+        });
+       
+      
 class realtimedatabase extends Component{
 
     constructor(props) {
@@ -81,81 +64,28 @@ class realtimedatabase extends Component{
             
           
             return(
-                <View style ={styles.container}>
+                <ImageBackground style={styles.container}>
+          
+                    <View>
                     <Text style= {styles.title}>RealTime Data</Text>
-                        <View>
-                          <Text >{"Humidity: " + Humidity} </Text>
-                          <Text >{"Ph: " + Ph} </Text>
-                          <Text >{"Light: " + Light} </Text>
-                          <Text >{"Temperature: " + Temperature} </Text>
-                        </View>
-                </View>
+                    </View>
+                    <TouchableOpacity style = {styles.top} onPress={() => alert('hello')}> 
+                    <Text style={styles.text}>{"Humidity: " + Humidity} </Text>
+                    </TouchableOpacity>
+                    <View style = {styles.top}>
+                     <Text style={styles.text}>{"Ph: " + Ph} </Text>
+                    </View>
+                    <View style = {styles.top}>
+                     <Text style={styles.text}>{"Light: " + Light} </Text> 
+                     </View>
+                    <View style = {styles.top}>
+                    <Text style={styles.text}>{"Temperature: " + Temperature} </Text>
+                    </View>
+                   
+                </ImageBackground>
                   );
             }
           }
       
   export default realtimedatabase;
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   title: {
-//     fontSize: 25,
-//     fontWeight: 'bold',
-//   }
-// }); 
-
-
-
-// class realtimedatabase extends Component{
-
-//   constructor(props) {
-//       super(props);
-//           this.state = {
-//               data:'',
-//           }
-//       }
-  
-//       async componentDidMount(){
-//           firebase.database().ref("Sensor").on("value", o => {
-//               if (o.val()){
-//                 this.setState({data:Object.values(o.val())})
-//                 console.log("in Firebase")
-//                 console.log(o,36)
-//                 console.log(o.val(),37)
-//               }
-             
-//               })
-//               }
-
-//   render (){
-//     console.log(this.state.data,44)
-//          // const {Temperature, Humidity, Light, Ph
-//           //} = this.state.data || {}
-//           //console.log(Temperature, Humidity, Light, Ph)  
-          
-        
-//           return(
-//               <View style ={styles.container}>
-//                   <Text style={styles.title}>RealTime Data</Text>
-//                   {
-//                       this.state.data !== '' ? 
-//                       <View>
-//                         <Text>Humidity: {this.state.Humidity ? this.state.Humidity : 'null'} </Text>
-//                         <Text>Ph: {this.state.Ph ? this.state.Ph : 'null'} </Text>
-//                         <Text>Light: {this.state.Light ? this.state.Light : 'null'} </Text>
-//                         <Text>Temperature: {this.state.Temperature ? this.state.Temperature : 'null'} </Text>
-//                       </View>
-//                       : <ActivityIndicator color='blue'/>
-//                   }
-                      
-//               </View>
-//                 );
-//           }
-//         }
-    
-// export default realtimedatabase;
