@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, ImageBackground, Modal, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, Modal, Pressable, TouchableOpacity, SafeAreaView} from 'react-native';
 import * as firebase from 'firebase'
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -18,9 +18,9 @@ import { ScrollView } from 'react-native-gesture-handler';
             fontFamily: 'serif',
             color: "rgb(63, 112, 177)",
           },
-          container: {
-            flex: 1,
+          contentContainer: {
             justifyContent: "space-around",
+            padding: 20,
             backgroundColor: "rgb(208,220,224)",
             alignItems: 'center',
           },
@@ -32,7 +32,54 @@ import { ScrollView } from 'react-native-gesture-handler';
             justifyContent: 'center',
             borderRadius: 10,
           },
-        });
+          scrollView: {
+          },
+          container:{
+           flex: 1,
+          },
+          box:{
+              padding: 10,
+              width: '120%',
+              alignItems: 'center'
+            },
+            //yawa
+            modalView: {
+              margin: 20,
+              backgroundColor: "white",
+              borderRadius: 20,
+              padding: 35,
+              alignItems: "center",
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 2
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 4,
+              elevation: 5
+            },
+            button: {
+              borderRadius: 20,
+              padding: 10,
+              elevation: 2
+            },
+            buttonOpen: {
+              backgroundColor: "#F194FF",
+            },
+            buttonClose: {
+              backgroundColor: "#2196F3",
+            },
+            textStyle: {
+              color: "white",
+              fontWeight: "bold",
+              textAlign: "center"
+            },
+            modalText: {
+              marginBottom: 15,
+              textAlign: "center"
+            }
+          }
+        );
        
       
 class realtimedatabase extends Component{
@@ -43,14 +90,11 @@ class realtimedatabase extends Component{
                 data:'',
             }
         }
-    
+       
         async componentDidMount(){
             firebase.database().ref("Sensor").on("value", o => {
                 if (o.val()){
                   this.setState({data:(o.val())})
-                  console.log("in Firebase")
-                  console.log(o)
-                  console.log(o.val())
                 }
                
                 })
@@ -58,31 +102,55 @@ class realtimedatabase extends Component{
 
     render (){ 
       console.log(this.state.data)
-            const {Temperature, Humidity, Light, Ph
+            const {Temperature, Humidity, Light, Ph, Soil, WaterTemp
             } = this.state.data || {}
-            console.log(Temperature, Humidity, Light, Ph)  
+            console.log(Temperature, Humidity, Light, Ph, Soil, WaterTemp)  
             
           
             return(
-                <ImageBackground style={styles.container}>
-          
+
+             
+
+              <SafeAreaView style = {styles.container}>
+              <ScrollView contentContainerStyle={styles.contentContainer}>
                     <View>
                     <Text style= {styles.title}>RealTime Data</Text>
                     </View>
-                    <TouchableOpacity style = {styles.top} onPress={() => alert('hello')}> 
+                    <View style = {styles.box}>
+                    <TouchableOpacity  style={styles.top}
+                                       onPress={() => console.log('pressed')}> 
                     <Text style={styles.text}>{"Humidity: " + Humidity} </Text>
                     </TouchableOpacity>
+                    </View>
+                   
+                    <View style = {styles.box}>
                     <View style = {styles.top}>
                      <Text style={styles.text}>{"Ph: " + Ph} </Text>
                     </View>
+                    </View>
+                    <View style = {styles.box}>
                     <View style = {styles.top}>
                      <Text style={styles.text}>{"Light: " + Light} </Text> 
                      </View>
+                     </View>
+                     <View style = {styles.box}>
                     <View style = {styles.top}>
                     <Text style={styles.text}>{"Temperature: " + Temperature} </Text>
                     </View>
-                   
-                </ImageBackground>
+                    </View>
+                    <View style = {styles.box}>
+                    <View style = {styles.top}>
+                    <Text style={styles.text}>{"Soil Moisture: " + Soil} </Text>
+                    </View>
+                    </View>
+                    <View style = {styles.box}>
+                    <View style = {styles.top}>
+                    <Text style={styles.text}>{"Water Temperature: " + WaterTemp} </Text>
+                    </View>
+                    </View>
+                </ScrollView>   
+                </SafeAreaView>
+
                   );
             }
           }

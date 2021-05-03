@@ -2,8 +2,9 @@ import React, { Component, useState } from "react";
 import { Button } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native";
-import {  StyleSheet, Text, ScrollView, View, Alert, Switch,Image, } from "react-native";
-
+import {  StyleSheet, Text, ScrollView, View, Switch,Image, } from "react-native";
+import Slider from '@react-native-community/slider';
+import * as firebase from 'firebase';
 
 const styles = StyleSheet.create({
   text:{
@@ -39,13 +40,8 @@ const styles = StyleSheet.create({
    flex: 1
   },
   switch : {
-      // paddingTop : 10,
-      // paddingLeft : 68,
-      // paddingBottom : 20,
-      // alignItems: "center",
-      // justifyContent: "center"
-
-      margin: 43
+      marginTop: 37,
+      alignItems: 'center',
   },
   text1:{
     textAlign: 'center',
@@ -59,54 +55,70 @@ const styles = StyleSheet.create({
     height: 90,
     borderRadius: 13,
   },
+  slider:{
+    width: 120,
+    height: 10,
+    marginTop: 40,
+  },
+  
 });
 
 
 class Screen1 extends Component {
+
+  
   state ={
-    toggled: true,
-    toggle: true
+    toggled: false,
+    toggle: false,
+   
   }
+//switch1
   toggleSwitch = (value) => {
     this.setState({toggled: value})
+    this.setState(previousState => !previousState);
   }
+
+//switch 2
   toggledSwitch = (value) => {
     this.setState({toggle: value})
+    this.setState(previousState => !previousState);
   }
-  
+//alert
 buttonClickListener = () => {
-  alert("Clicked On Button !!!");
+  alert("Done !!!");
 };
-//   constructor () {
-//     super();
+  
+//slider
+  constructor(props) {
+      super(props);
+      this.state = {
+        sliderValue: 69,
+        data:'',
+        
+      }
+    }
 
-//     this.state = {
-//       activeSwitch: 1,
-//       useNativeDriver: true,
-//     };
-// }
-
+       
+        async componentDidMount(){
+            firebase.database().ref("Control").on("value", o => {
+                if (o.val()){
+                  this.setState({data:(o.val())})
+                }
+               
+                })
+                }
+    
 
 
     render(){ 
-     
-     
-      
+      console.log(this.state.data)
+      const {feed, light, pump} = this.state.data || {}
+      console.log(feed, light, pump)
           return (
             
             <SafeAreaView style = {styles.container}>
             <ScrollView contentContainerStyle={styles.contentContainer}>
-            {/* <View style = {styles.switch}>
-              <View style={styles.switch}>
-                <Switch
-                  trackColor={{ false: "#767577", true: "#81b0ff" }}
-                  thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                  ios_backgroundColor="#3e3e3e"
-                  onValueChange={toggleSwitch}
-                  value={isEnabled}
-                />
-              </View>
-            </View> */}
+             
              <View style={styles.box}>
                <View style = {styles.inner}>
                <Image style={styles.image}
@@ -120,37 +132,64 @@ buttonClickListener = () => {
               </View>
                </View>
              </View>
+             
+
              <View style={styles.box}>
              <View style = {styles.inner}>
              <Image style={styles.image}
-                        source = {require('../img/lights.png')}></Image>
+                        source = {require('../img/lights.png')}></Image>  
                 <Switch style = {styles.switch}
+                      trackColor={{ false: "#767577", true:  "#6291BF" }}
+                      thumbColor={this.toggleSwitch ? "rgb(63, 112, 177)" : "#fffff"}
                       onValueChange = {this.toggleSwitch}
                       value = {this.state.toggled}>
                   </Switch>
+                  <Text style = {{ paddingBottom: 40, alignContent: 'center', color: "rgb(63, 112, 177)"}}> {this.state.toggled ? 'ON' : 'OFF'}</Text>
                </View>
              </View>
+
+
              <View style={styles.box}>
              <View style = {styles.inner}>
              <Image style={styles.image}
                         source = {require('../img/fan.png')}></Image>
+               <Slider style = {styles.slider}
+                  minimumValue={0}
+                  maximumValue={1000}
+                  minimumTrackTintColor="#6291BF"
+                  maximumTrackTintColor= "#6291BF"
+                  thumbTintColor = "rgb(63, 112, 177)"
+                  step={100}
+                  value={this.state.sliderValue}
+                  onValueChange={(value) => this.setState({sliderValue: value})}
+                />
+                <Text style = {{ paddingTop: 12, alignContent: 'center', color: "rgb(63, 112, 177)"}}>
+                     {this.state.sliderValue}
+                  </Text>
                </View>
-              
              </View>
+
+
              <View style={styles.box}>
              <View style = {styles.inner}>
              <Image style={styles.image}
                         source = {require('../img/pump.png')}></Image>
                <Switch style = {styles.switch}
+                      trackColor={{ false: "#767577", true:  "#6291BF" }}
+                      thumbColor={this.toggledSwitch ? "rgb(63, 112, 177)" : "#fffff"}
                       onValueChange = {this.toggledSwitch}
                       value = {this.state.toggle}>
                   </Switch> 
+                  <Text style = {{ paddingBottom: 40, 
+                                    alignContent: 'center', 
+                                    color: "rgb(63, 112, 177)"}}> 
+                                {this.state.toggle ? 'ON' : 'OFF'}</Text>
                </View>
                </View>
+            
              </ScrollView>
              </SafeAreaView>
           );
     }
 }
-
 export default Screen1;

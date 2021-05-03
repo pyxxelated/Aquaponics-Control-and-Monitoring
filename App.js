@@ -27,94 +27,119 @@ const MonitoringStack = createStackNavigator();
 const MaintenanceStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
+//Home Page
  const HomeStackScreen = ({navigation}) => ( 
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={Home}  options={{ 
-        headerLeft: () => (
-          <Icon.Button name ="navicon" size = {29}
-          color="rgb(208,220,224)" backgroundColor='rgb(27, 53, 145)' onPress={() => navigation.openDrawer()}>
-          </Icon.Button>
-          ),
-        headerStyle: {
-            backgroundColor: 'rgb(27, 53, 145)' ,
-        },
-        headerTintColor: "rgb(208,220,224)",
-        headerTitleStyle:{
-          fontFamily: 'serif'
-        }
-        }}/>
+      <HomeStack.Screen name="Home" 
+                        component={Home}  
+                        options={{ headerLeft: () => (
+                  <Icon.Button name ="navicon" 
+                               size = {29}
+                               color="rgb(208,220,224)" 
+                               backgroundColor='rgb(27, 53, 145)' 
+                               onPress={() => navigation.openDrawer()}>
+                  </Icon.Button>
+                  ),
+                  headerStyle: {
+                      backgroundColor: 'rgb(27, 53, 145)' ,
+                  },
+                  headerTintColor: "rgb(208,220,224)",
+                  headerTitleStyle:{
+                      fontFamily: 'serif'
+                  }
+                  }}/>
     </HomeStack.Navigator>
  )
+
+ //Control Page
  const ControlStackScreen = ({navigation}) => ( 
   <ControlStack.Navigator>
-    <ControlStack.Screen name="Control" component={Screen1}options={{
-        headerLeft: () => (
-          <Icon.Button name ="navicon" size = {29}
-          color="rgb(208,220,224)" backgroundColor="rgb(27, 53, 145)" onPress={() => navigation.openDrawer()}>
-          </Icon.Button>
-          ),
-        headerStyle: {
-            backgroundColor: 'rgb(27, 53, 145)' ,
-        },
-        headerTintColor: "rgb(208,220,224)",
-        headerTitleStyle:{
-          fontFamily: 'serif'
-        }
-        }}/>
+    <ControlStack.Screen name="Control" 
+                         component={Screen1}
+                         options={{headerLeft: () => (
+                  <Icon.Button name ="navicon" 
+                               size = {29}
+                               color="rgb(208,220,224)" 
+                               backgroundColor="rgb(27, 53, 145)" 
+                               onPress={() => navigation.openDrawer()}>
+                  </Icon.Button>
+                  ),
+                  headerStyle: {
+                      backgroundColor: 'rgb(27, 53, 145)' ,
+                  },
+                  headerTintColor: "rgb(208,220,224)",
+                  headerTitleStyle:{
+                      fontFamily: 'serif'
+                  }
+                  }}/>
   </ControlStack.Navigator>
 )
+
+//Monitoring Page
 const MonitoringStackScreen = ({navigation}) => ( 
   <MonitoringStack.Navigator>
-    <MonitoringStack.Screen name="Monitoring" component={TopTabs}options={{
-        headerLeft: () => (
-          <Icon.Button name ="navicon" size = {29}
-          color="rgb(208,220,224)" backgroundColor="rgb(27, 53, 145)" onPress={() => navigation.openDrawer()}>
-          </Icon.Button>
-          ),
-        headerStyle: {
-            backgroundColor: 'rgb(27, 53, 145)' ,
-        },
-        headerTintColor: "rgb(208,220,224)",
-        headerTitleStyle:{
-          fontFamily: 'serif'
-        }
-        }}/>
-  </MonitoringStack.Navigator>
-  
+    <MonitoringStack.Screen name="Monitoring" 
+                            component={TopTabs}
+                            options={{headerLeft: () => (
+                  <Icon.Button name ="navicon" 
+                               size = {29}
+                               color="rgb(208,220,224)" 
+                               backgroundColor="rgb(27, 53, 145)" 
+                               onPress={() => navigation.openDrawer()}>
+                  </Icon.Button>
+                  ),
+                  headerStyle: {
+                      backgroundColor: 'rgb(27, 53, 145)' ,
+                  },
+                  headerTintColor: "rgb(208,220,224)",
+                  headerTitleStyle:{
+                      fontFamily: 'serif'
+                  }
+                  }}/>
+  </MonitoringStack.Navigator> 
 )
+
+//Maintenance Page
 const MaintenanceStackScreen = ({navigation}) => ( 
   <MaintenanceStack.Navigator>
-    <MaintenanceStack.Screen name="Maintenance" component={Screen2}options={{
-        headerLeft: () => (
-          <Icon.Button name ="navicon" size = {29}
-          color="rgb(208,220,224)" backgroundColor="rgb(27, 53, 145)" onPress={() => navigation.openDrawer()}>
-          </Icon.Button>
-          ),
-        headerStyle: {
-            backgroundColor: 'rgb(27, 53, 145)' ,
-        },
-        headerTintColor: "rgb(208,220,224)",
-        headerTitleStyle:{
-          fontFamily: 'serif'
-        }
-        }}/>
+    <MaintenanceStack.Screen name="Maintenance" 
+                             component={Screen2}
+                             options={{headerLeft: () => (
+                    <Icon.Button name ="navicon" 
+                                 size = {29}
+                                 color="rgb(208,220,224)" 
+                                 backgroundColor="rgb(27, 53, 145)" 
+                                 onPress={() => navigation.openDrawer()}>
+                    </Icon.Button>
+                    ),
+                    headerStyle: {
+                        backgroundColor: 'rgb(27, 53, 145)' ,
+                    },
+                    headerTintColor: "rgb(208,220,224)",
+                    headerTitleStyle:{
+                        fontFamily: 'serif'
+                    }
+                    }}/>
   </MaintenanceStack.Navigator>
 )
 
+//For Analytics and Realtime Database
  const TopTabs =() => {
     return(
     <Tab.Navigator 
-      tabBarOptions = {{
-        activeTintColor: 'rgb(27, 53, 145)',
-        inactiveTintColor: 'rgb(63, 112, 177)',
+        tabBarOptions = {{
+            activeTintColor: 'rgb(27, 53, 145)',
+            inactiveTintColor: 'rgb(63, 112, 177)',
         style: {
-          backgroundColor : 'rgb(208,220,224)' ,
+            backgroundColor : 'rgb(208,220,224)' ,
         },
       }}
       
      >
-        <Tab.Screen name="RealTime Data" component={realtimedatabase}/>
-        <Tab.Screen name="Analytics" component={Analytics}/>
+        <Tab.Screen name="RealTime Data" 
+                    component={realtimedatabase}/>
+        <Tab.Screen name="Analytics" 
+                    component={Analytics}/>
     </Tab.Navigator>
     );
  }
@@ -124,24 +149,30 @@ const MaintenanceStackScreen = ({navigation}) => (
 export default class App extends Component {
 render (){
     return(
+
+      //Drawers
       <NavigationContainer>
-      <Drawer.Navigator 
+        <Drawer.Navigator 
            drawerStyle={{
-            backgroundColor: "rgb(208,220,224)",
-            width: 240,
-           }}
+              backgroundColor: "rgb(208,220,224)",
+              width: 240,
+              }}
            drawerContentOptions={{
-            activeTintColor: 'rgb(27, 53, 145)',
-            inactiveTintColor: "rgb(63, 112, 177)",
-            fontFamily: 'serif'
-            }}
+              activeTintColor: 'rgb(27, 53, 145)',
+              inactiveTintColor: "rgb(63, 112, 177)",
+              fontFamily: 'serif'
+              }}
           
           >
-        <Drawer.Screen name="Home" component={HomeStackScreen} />
-        <Drawer.Screen name="Control" component={ControlStackScreen} />
-        <Drawer.Screen name="Monitoring" component={MonitoringStackScreen}/>
-        <Drawer.Screen name="Maintenance" component={MaintenanceStackScreen}/>
-      </Drawer.Navigator>
+          <Drawer.Screen name="Home" 
+                        component={HomeStackScreen} />
+          <Drawer.Screen name="Control" 
+                        component={ControlStackScreen} />
+          <Drawer.Screen name="Monitoring" 
+                        component={MonitoringStackScreen}/>
+          <Drawer.Screen name="Maintenance" 
+                        component={MaintenanceStackScreen}/>
+        </Drawer.Navigator>
       </NavigationContainer>
     );
   }

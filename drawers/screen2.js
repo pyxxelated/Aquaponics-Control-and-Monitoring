@@ -63,9 +63,9 @@ class Screen2 extends Component {
         firebase.database().ref("Status").on("value", o => {
             if (o.val()){
               this.setState({data:(o.val())})
-              console.log("in Firebase")
-              console.log(o)
-              console.log(o.val())
+              // console.log("in Firebase")
+              // console.log(o)
+              //console.log(o.val())
             }
            
             })
@@ -73,9 +73,9 @@ class Screen2 extends Component {
 
   render(){
     console.log(this.state.data)
-    const {HumidityTemp, Light, Ph, Soil, WaterTemp
+    const {HumidityTemp, Light, Ph, Soil, WaterTemp, Battery
     } = this.state.data || {}
-    console.log(HumidityTemp, Light, Ph, Soil, WaterTemp)  
+    console.log(HumidityTemp, Light, Ph, Soil, WaterTemp, Battery)  
     
     return(
      <SafeAreaView style = {styles.container}>
@@ -85,7 +85,7 @@ class Screen2 extends Component {
           <Image style={styles.image}
                         source = {require('../img/battery.png')}></Image>
           <Text style={styles.label}>Battery</Text>
-          <Text style={styles.text} >Status: 69%</Text>
+          <Text style={styles.text} > {'Status: ' + Battery + '%'} </Text>
           </View>
         </View>
         <View style={styles.box}>
