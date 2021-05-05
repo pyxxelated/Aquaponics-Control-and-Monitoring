@@ -128,6 +128,14 @@ class Screen2 extends Component {
           <Text style={styles.text}> { 'Status: ' + HumidityTemp}</Text>
           </View>
         </View>
+        <View style={styles.box}>
+        <View style = {styles.inner}>
+        <Image style={styles.image}
+                        source = {require('../img/pump.png')}></Image>
+          <Text style={styles.label}>Water Pump</Text>
+          <Text style={styles.text}> { 'Status: ' + HumidityTemp}</Text>
+          </View>
+        </View>
        
         </ScrollView>
         </SafeAreaView>

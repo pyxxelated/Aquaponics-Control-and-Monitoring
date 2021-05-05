@@ -137,9 +137,9 @@ buttonClickListener = () => {
              <View style={styles.box}>
              <View style = {styles.inner}>
              <Image style={styles.image}
-                        source = {require('../img/pump.png')}></Image>
-               <Switch style = {styles.switch}
-                      
+                        source = {require('../img/waterplants.png')}></Image>
+               {/* <Switch style = {styles.switch}
+                      duration = {200}
                       trackColor={{ false: "#767577", true:  "#6291BF" }}
                       thumbColor={this.toggledSwitch ? "rgb(63, 112, 177)" : "#fffff"}
                       onValueChange = {this.toggledSwitch}
@@ -150,10 +150,16 @@ buttonClickListener = () => {
                   <Text style = {{ paddingBottom: 40, 
                                     alignContent: 'center', 
                                     color: "rgb(63, 112, 177)"}}> 
-                                {this.state.toggle ? 'ON' : 'OFF'}</Text>
+                                {this.state.toggle ? 'ON' : 'OFF'}</Text> */}
+                <View style={[{ width: 100 , margin: 40, backgroundColor: "rgb(63, 112, 177)" }]}>
+                <Button 
+                  onPress={this.buttonClickListener}
+                  title="Water"
+                  color="rgb(63, 112, 177)"
+                />
                </View>
                </View>
-            
+               </View>
              </ScrollView>
              </SafeAreaView>
           );
