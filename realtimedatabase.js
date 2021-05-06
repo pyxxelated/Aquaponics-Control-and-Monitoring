@@ -13,7 +13,7 @@ import { ImageBackground } from 'react-native';
               fontSize: 17,
               fontFamily: 'serif',
               color: "#4472ca",
-              paddingBottom: 60, 
+              paddingBottom: 70, 
               paddingTop: 0,
               fontWeight: "bold",
             },
@@ -25,7 +25,7 @@ import { ImageBackground } from 'react-native';
             },
             box: {
               width: 165,
-              height: 280,
+              height: 290,
               padding: 10,
             },
             inner:{
@@ -39,7 +39,7 @@ import { ImageBackground } from 'react-native';
               width: 120,
               height:120,
               justifyContent: 'center',
-              paddingBottom: 0,
+              paddingBottom: 20,
             },
 
             scrollView: {
@@ -47,14 +47,14 @@ import { ImageBackground } from 'react-native';
             container:{
              flex: 1
             },
-            text:{
-              textAlign: 'center',
-              fontSize: 14,
-              alignContent: 'center',
-              fontFamily: 'serif',
-              paddingTop: 30,
-              color: "rgb(63, 112, 177)",
-            }
+            // text:{
+            //   textAlign: 'center',
+            //   fontSize: 14,
+            //   alignContent: 'center',
+            //   fontFamily: 'serif',
+            //   paddingTop: 30,
+            //   color: "rgb(63, 112, 177)",
+            // }
           }
         );
        
@@ -81,9 +81,9 @@ class realtimedatabase extends Component{
 
     render (){ 
       console.log(this.state.data)
-            const {Temperature, Humidity, Light, Ph, Soil, WaterTemp
+            const {Temperature, Humidity, Light, Ph, Soil, WaterTemp, WaterLevel
             } = this.state.data || {}
-            console.log(Temperature, Humidity, Light, Ph, Soil, WaterTemp)  
+            console.log(Temperature, Humidity, Light, Ph, Soil, WaterTemp, WaterLevel)  
             
           
             return(
@@ -93,12 +93,12 @@ class realtimedatabase extends Component{
                   <View  style = {styles.inner}>
                   <ImageBackground source ={require('./img/humid.png')}
                                     style = {styles.images}
-                                    imageStyle={{opacity: 0.3}}>
+                                    imageStyle={{opacity: 0.4}}>
                   <Text style = {styles.label} > Humidity </Text>
-                    <RNSpeedometer value={Humidity} 
+                    <RNSpeedometer value ={Humidity}
                                   size= {100}
                                   maxValue={100}
-                                  allowedDecimals = {4}
+                                  allowedDecimals = {2}
                                   labels={[
                                     {
                                      labelFontSize: 12,
@@ -127,13 +127,13 @@ class realtimedatabase extends Component{
                     <View style = {styles.box}>
                     <View style = {styles.inner}>
                     <ImageBackground source ={require('./img/watester.png')} style = {styles.images}
-                    imageStyle={{opacity: 0.3}}>
+                    imageStyle={{opacity: 0.4}}>
                     <Text style = {styles.label}> Ph Level </Text>
                     <RNSpeedometer value={Ph}
                                    size={100}
                                    minValue={0}
                                    maxValue={14}
-                                   allowedDecimals = {4}
+                                   allowedDecimals = {2}
                                    labels={[
                                     {
                                       activeBarColor: '#cfdee7' ,
@@ -157,13 +157,13 @@ class realtimedatabase extends Component{
                     <View style = {styles.box}>
                     <View style = {styles.inner}>
                     <ImageBackground source ={require('./img/ground.png')} style = {styles.images}
-                  imageStyle={{opacity: 0.3}}>
+                  imageStyle={{opacity: 0.4}}>
                     <Text style = {styles.label}> Light </Text>
                     <RNSpeedometer value={Light} 
                                    size={100}
                                    minValue={0}
                                    maxValue={500}
-                                   allowedDecimals = {4}
+                                   allowedDecimals = {2}
                                    labels={[
                                     {
                                       activeBarColor: '#cfdee7' ,
@@ -187,13 +187,13 @@ class realtimedatabase extends Component{
                      <View style = {styles.box}>
                      <View style = {styles.inner}>
                      <ImageBackground source ={require('./img/hot.png')} style = {styles.images}
-                       imageStyle={{opacity: 0.3}}>
+                       imageStyle={{opacity: 0.4}}>
                      <Text style = {styles.label}> Temperature </Text>
                      <RNSpeedometer value={Temperature} 
                                      size={100}
                                      minValue={0}
                                      maxValue={100}
-                                     allowedDecimals = {4}
+                                     allowedDecimals = {2}
                                      labels={[
                                       {
                                         activeBarColor: '#cfdee7' ,
@@ -214,45 +214,37 @@ class realtimedatabase extends Component{
                     </ImageBackground>
                     </View>
                     </View>
-                    {/* <View style = {styles.box}>
+                    <View style = {styles.box}>
                     <View style = {styles.inner}>
-                    <ImageBackground source ={require('./img/humid.png')} style = {styles.images}
-                   imageStyle={{opacity: 0.2}}>
-                    <Text style = {styles.label}> Soil Temperature </Text>
-                      <RNSpeedometer value={Soil} 
+                    <ImageBackground source ={require('./img/waterlevel.png')} style = {styles.images}
+                   imageStyle={{opacity: 0.4}}>
+                    <Text style = {styles.label}> Water    Level</Text>
+                      <RNSpeedometer value={WaterLevel} 
                                      size={100}
                                      minValue={0}
-                                     maxValue={500}
+                                     maxValue={1}
                                      labels={[
-                                      {
-                                        activeBarColor: '#cfdee7' ,
-                                      },
                                       {
                                         activeBarColor: '#92b4f4',
                                       },
                                       {
-                                        activeBarColor: '#5e7ce2',
-                                      },
-                                      {
+                                        name: 'FULL',
                                         activeBarColor: '#4472ca',
-                                      },
-                                      {
-                                        activeBarColor: '#0a369d',
                                       },
                                     ]}/>
                     </ImageBackground>
                     </View>
-                    </View> */}
+                    </View>
                     <View style = {styles.box}>
                     <View style = {styles.inner}>
                     <ImageBackground source ={require('./img/watemp.png')} style = {styles.images}
-                    imageStyle={{opacity: 0.3}}>
+                    imageStyle={{opacity: 0.4}}>
                     <Text style = {styles.label}> Water Temperature </Text>
                     <RNSpeedometer value={WaterTemp} 
                                    size={100}
                                    minValue={0}
                                    maxValue={100}
-                                   allowedDecimals = {4}
+                                   allowedDecimals = {2}
                                    labels={[
                                     {
                                       activeBarColor: '#cfdee7' ,

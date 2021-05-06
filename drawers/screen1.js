@@ -64,20 +64,40 @@ buttonClickListener = () => {
 };
 
 
+sliderValue = (value) => {
+  firebase.database()
+  .ref('/Control')
+  .update({
+      fan: value,
+  })
+  this.setState({sliderValue: value})
+
+}
+
+
   constructor(props) {
       super(props);
       this.state = {
-        sliderValue: 0,
+        sliderValue: '',
         toggle: false,
         toggled: false,
       }
     }
 
-  
-    
-
+    //  async componentDidMount(){
+    //   firebase.database().ref("Control").on("value", o => {
+    //       if (o.val()){
+    //         this.setState({sliderValue:(o.val())})
+    //         //console.log(o.val())
+    //       }
+         
+    //       })
+    //     }
+        
     render(){ 
-    
+      //console.log(this.state.sliderValue)
+      // const {fan} = this.state.sliderValue || {}
+      // console.log(fan)
       return (
             
             <SafeAreaView style = {styles.container}>
@@ -124,8 +144,8 @@ buttonClickListener = () => {
                   maximumTrackTintColor= "#6291BF"
                   thumbTintColor = "rgb(63, 112, 177)"
                   step={100}
+                  onValueChange={this.sliderValue}
                   //value={this.state.sliderValue}
-                  onValueChange={(value) => this.setState({sliderValue: value})}
                 />
                 <Text style = {{ paddingTop: 12, alignContent: 'center', color: "rgb(63, 112, 177)"}}>
                      {this.state.sliderValue}
