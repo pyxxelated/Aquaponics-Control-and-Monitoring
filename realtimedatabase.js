@@ -4,28 +4,29 @@ import * as firebase from 'firebase'
 import { ScrollView } from 'react-native-gesture-handler';
 import RNSpeedometer from 'react-native-speedometer';
 import { ImageBackground } from 'react-native';
-
+import { hotpink } from 'color-name';
   
   const styles = StyleSheet.create({
         
             label:{
               textAlign: 'center',
-              fontSize: 17,
+              fontSize: 18,
               fontFamily: 'serif',
               color: "#4472ca",
-              paddingBottom: 70, 
-              paddingTop: 0,
               fontWeight: "bold",
+              paddingBottom:40
             },
             contentContainer: {
-              padding: 15,
-              flexWrap: "wrap",
-              flexDirection: "row",
+              justifyContent: "center",
+              flexWrap:"wrap",
+              flexDirection:"row",
               backgroundColor: "rgb(208,220,224)",
+              alignItems: 'center',
+              width: '100%',
             },
             box: {
-              width: 165,
-              height: 290,
+              width: 175,
+              height: 330,
               padding: 10,
             },
             inner:{
@@ -36,10 +37,10 @@ import { ImageBackground } from 'react-native';
               borderRadius: 10,
             },
             images: {
-              width: 120,
-              height:120,
-              justifyContent: 'center',
-              paddingBottom: 20,
+              width: 100,
+              height:100,
+              paddingTop:60,
+              marginBottom:70
             },
 
             scrollView: {
@@ -47,14 +48,6 @@ import { ImageBackground } from 'react-native';
             container:{
              flex: 1
             },
-            // text:{
-            //   textAlign: 'center',
-            //   fontSize: 14,
-            //   alignContent: 'center',
-            //   fontFamily: 'serif',
-            //   paddingTop: 30,
-            //   color: "rgb(63, 112, 177)",
-            // }
           }
         );
        
@@ -91,34 +84,39 @@ class realtimedatabase extends Component{
               <ScrollView contentContainerStyle={styles.contentContainer}>
                   <View style={styles.box}>
                   <View  style = {styles.inner}>
-                  <ImageBackground source ={require('./img/humid.png')}
-                                    style = {styles.images}
-                                    imageStyle={{opacity: 0.4}}>
                   <Text style = {styles.label} > Humidity </Text>
+                  <ImageBackground source = {require('./img/humid.png')}
+                           style = {styles.images} 
+                           imageStyle={{opacity: 0.3}}>
                     <RNSpeedometer value ={Humidity}
                                   size= {100}
+                                  minValue={0}
                                   maxValue={100}
                                   allowedDecimals = {2}
                                   labels={[
                                     {
+                                     name: 'Cold',
                                      labelFontSize: 12,
                                      activeBarColor: '#cfdee7' ,
                                     },
                                     {
+                                      name: 'Moderate',
                                       activeBarColor: '#92b4f4',
                                     },
                                     {
+                                      name: 'Nuetral',
                                       activeBarColor: '#5e7ce2',
                                     },
                                     {
+                                      name: 'Warm',
                                       activeBarColor: '#4472ca',
                                     },
                                     {
+                                      name: 'Hot',
                                       activeBarColor: '#0a369d',
                                     },
                                   ]}/> 
-                      
-                      </ImageBackground>
+                    </ImageBackground>
                     </View>
                     </View>
                   
@@ -126,29 +124,26 @@ class realtimedatabase extends Component{
                     */}
                     <View style = {styles.box}>
                     <View style = {styles.inner}>
-                    <ImageBackground source ={require('./img/watester.png')} style = {styles.images}
-                    imageStyle={{opacity: 0.4}}>
                     <Text style = {styles.label}> Ph Level </Text>
-                    <RNSpeedometer value={Ph}
+                    <ImageBackground source ={require('./img/watester.png')} style = {styles.images}
+                    imageStyle={{opacity: 0.3}}>
+                     <RNSpeedometer value={Ph}
                                    size={100}
                                    minValue={0}
                                    maxValue={14}
                                    allowedDecimals = {2}
                                    labels={[
                                     {
+                                      name: 'Acidic',
                                       activeBarColor: '#cfdee7' ,
                                     },
                                     {
+                                      name: 'Neutral',
                                       activeBarColor: '#92b4f4',
                                     },
                                     {
+                                      name: 'Basic',
                                       activeBarColor: '#5e7ce2',
-                                    },
-                                    {
-                                      activeBarColor: '#4472ca',
-                                    },
-                                    {
-                                      activeBarColor: '#0a369d',
                                     },
                                   ]}/>
                     </ImageBackground>
@@ -156,28 +151,33 @@ class realtimedatabase extends Component{
                     </View>
                     <View style = {styles.box}>
                     <View style = {styles.inner}>
-                    <ImageBackground source ={require('./img/ground.png')} style = {styles.images}
-                  imageStyle={{opacity: 0.4}}>
                     <Text style = {styles.label}> Light </Text>
+                    <ImageBackground source ={require('./img/ground.png')} style = {styles.images}
+                  imageStyle={{opacity: 0.3}}>
                     <RNSpeedometer value={Light} 
                                    size={100}
                                    minValue={0}
-                                   maxValue={500}
+                                   maxValue={1000}
                                    allowedDecimals = {2}
                                    labels={[
                                     {
+                                      name: 'Dark',
                                       activeBarColor: '#cfdee7' ,
                                     },
                                     {
+                                      name: 'Dim',
                                       activeBarColor: '#92b4f4',
                                     },
                                     {
+                                      name: 'Normal',
                                       activeBarColor: '#5e7ce2',
                                     },
                                     {
+                                      name: 'Bright',
                                       activeBarColor: '#4472ca',
                                     },
                                     {
+                                      name: 'Ver Bright',
                                       activeBarColor: '#0a369d',
                                     },
                                   ]}/>
@@ -186,9 +186,9 @@ class realtimedatabase extends Component{
                      </View>
                      <View style = {styles.box}>
                      <View style = {styles.inner}>
-                     <ImageBackground source ={require('./img/hot.png')} style = {styles.images}
-                       imageStyle={{opacity: 0.4}}>
                      <Text style = {styles.label}> Temperature </Text>
+                     <ImageBackground source ={require('./img/hot.png')} style = {styles.images}
+                       imageStyle={{opacity: 0.3}}>
                      <RNSpeedometer value={Temperature} 
                                      size={100}
                                      minValue={0}
@@ -196,18 +196,23 @@ class realtimedatabase extends Component{
                                      allowedDecimals = {2}
                                      labels={[
                                       {
+                                        name: 'Cold',
                                         activeBarColor: '#cfdee7' ,
                                       },
                                       {
+                                        name: 'Moderate',
                                         activeBarColor: '#92b4f4',
                                       },
                                       {
+                                        name: 'Neutral',
                                         activeBarColor: '#5e7ce2',
                                       },
                                       {
+                                        name: 'Warm',
                                         activeBarColor: '#4472ca',
                                       },
                                       {
+                                        name: 'Hot',
                                         activeBarColor: '#0a369d',
                                       },
                                     ]}/>
@@ -216,9 +221,9 @@ class realtimedatabase extends Component{
                     </View>
                     <View style = {styles.box}>
                     <View style = {styles.inner}>
+                    <Text style = {styles.label}> Water Level</Text>
                     <ImageBackground source ={require('./img/waterlevel.png')} style = {styles.images}
-                   imageStyle={{opacity: 0.4}}>
-                    <Text style = {styles.label}> Water    Level</Text>
+                   imageStyle={{opacity: 0.3}}>
                       <RNSpeedometer value={WaterLevel} 
                                      size={100}
                                      minValue={0}
@@ -237,31 +242,87 @@ class realtimedatabase extends Component{
                     </View>
                     <View style = {styles.box}>
                     <View style = {styles.inner}>
-                    <ImageBackground source ={require('./img/watemp.png')} style = {styles.images}
-                    imageStyle={{opacity: 0.4}}>
-                    <Text style = {styles.label}> Water Temperature </Text>
-                    <RNSpeedometer value={WaterTemp} 
+                    <Text style = {styles.label}> Soil Moisture </Text>
+                    <ImageBackground source ={require('./img/soiltemp.png')} style = {styles.images}
+                    imageStyle={{opacity: 0.3}}>
+                    <RNSpeedometer value={Soil} 
                                    size={100}
                                    minValue={0}
-                                   maxValue={100}
+                                   maxValue={1500}
                                    allowedDecimals = {2}
                                    labels={[
                                     {
+                                      
                                       activeBarColor: '#cfdee7' ,
                                     },
                                     {
+                                      
                                       activeBarColor: '#92b4f4',
                                     },
                                     {
+                                      
                                       activeBarColor: '#5e7ce2',
                                     },
                                     {
+                                      
                                       activeBarColor: '#4472ca',
                                     },
                                     {
+                                     
                                       activeBarColor: '#0a369d',
                                     },
                                   ]}/>
+                    </ImageBackground> 
+                    </View>
+                    </View>
+                    <View style = {styles.box}>
+                    <View style = {styles.inner}> 
+                    <Text style = {styles.label}> Water Temperature </Text>
+                    <ImageBackground source ={require('./img/watemp.png')} style = {styles.images}
+                    imageStyle={{opacity: 0.3}}>
+                    <RNSpeedometer value={WaterTemp} 
+                                   size={100}
+                                   minValue={0}
+                                   maxValue={200}
+                                   allowedDecimals = {2}
+                                   labels={[
+                                    {
+                                      name: 'Cold',
+                                      activeBarColor: '#cfdee7' ,
+                                    },
+                                    {
+                                      name: 'Moderate',
+                                      activeBarColor: '#92b4f4',
+                                    },
+                                    {
+                                      name: 'Neutral',
+                                      activeBarColor: '#5e7ce2',
+                                    },
+                                    {
+                                      name: 'Warm',
+                                      activeBarColor: '#4472ca',
+                                    },
+                                    {
+                                      name: 'Hot',
+                                      activeBarColor: '#0a369d',
+                                    },
+                                  ]}/>
+                    
+                          {/* <Speedometer
+                            value={Soil}
+                            totalValue={1000}
+                            size={120}
+                            outerColor="#cfdee7"
+                            internalColor="#4472ca"
+                            showText
+                            //text="50.00"
+                            textStyle={{ color: 'green' }}
+                            showLabels
+                            labelStyle={{ color: 'blue' }}
+                            //labelFormatter={number => `${number}%`}
+                            showPercent
+                            percentStyle={{ color: 'black' }} */}
+                          {/* /> */}
                     </ImageBackground>
                     </View>
                     </View>

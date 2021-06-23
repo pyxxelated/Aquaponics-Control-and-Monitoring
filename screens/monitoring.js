@@ -21,7 +21,7 @@ class Monitoring extends Component {
         return(
             <View style={styles.container}>
                 <Button title='Realtime Data' onPress={() => {}}/>
-                <Button title='Analytics' onPress={() => {}}/>
+                {/* <Button title='Analytics' onPress={() => {}}/> */}
             </View>
         );
     }

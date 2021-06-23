@@ -14,10 +14,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   contentContainer: {
-    padding: 10,
-    flexWrap: "wrap",
-    flexDirection: "row",
+    justifyContent: "center",
+    flexWrap:"wrap",
+    flexDirection:"row",
     backgroundColor: "rgb(208,220,224)",
+    alignItems: 'center',
+    width: '100%'
   },
   box: {
     width: 165,

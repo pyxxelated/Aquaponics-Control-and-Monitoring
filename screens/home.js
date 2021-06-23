@@ -25,13 +25,6 @@ const styles = StyleSheet.create({
       fontFamily: 'serif'
     },
     inner:{
-      // alignItems: 'center',
-      // padding: 24,
-      // width: '85%',
-      // height: '92%',
-      // backgroundColor: 'rgb(185, 198, 210)',
-      // borderRadius: 10,
-     
         backgroundColor: 'rgb(185, 198, 210)',
         justifyContent: 'center',
         alignItems: 'center',

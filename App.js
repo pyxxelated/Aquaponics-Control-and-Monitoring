@@ -138,8 +138,8 @@ const MaintenanceStackScreen = ({navigation}) => (
      >
         <Tab.Screen name="RealTime Data" 
                     component={realtimedatabase}/>
-        <Tab.Screen name="Analytics" 
-                    component={Analytics}/>
+        {/* <Tab.Screen name="Analytics" 
+                    component={Analytics}/> */}
     </Tab.Navigator>
     );
  }

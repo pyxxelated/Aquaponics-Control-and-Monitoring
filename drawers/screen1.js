@@ -60,8 +60,12 @@ class Screen1 extends Component {
 
   //alert
 buttonClickListener = () => {
-  alert("Done !!!");
+  alert("The fish has been fed");
 };
+
+buttonClickListener2 = () => {
+  alert("Done")
+}
 
 
 sliderValue = (value) => {
@@ -105,6 +109,7 @@ sliderValue = (value) => {
              
              <View style={styles.box}>
                <View style = {styles.inner}>
+                 <Text style = {styles.text1}> Fish Feeder </Text>
                <Image style={styles.image}
                       source = {require('../img/pet-feeder.png')}></Image>
                 <View style={[{ width: 90 , margin: 40, backgroundColor: "rgb(63, 112, 177)" }]}>
@@ -120,21 +125,23 @@ sliderValue = (value) => {
             {/* Switch 1 */}
              <View style={styles.box}>
              <View style = {styles.inner}>
+             <Text style = {styles.text1}> Sprinkler </Text>
              <Image style={styles.image}
-                        source = {require('../img/lights.png')}></Image>  
-                <Switch style = {styles.switch}
-                      trackColor={{ false: "#767577", true:  "#6291BF" }}
-                      thumbColor={this.toggleSwitch ? "rgb(63, 112, 177)" : "#fffff"}
-                      onValueChange = {this.toggleSwitch}
-                      value = {this.state.toggled}>
-                  </Switch>
-                  <Text style = {{ paddingBottom: 40, alignContent: 'center', color: "rgb(63, 112, 177)"}}> {this.state.toggled ? 'ON' : 'OFF'}</Text>
+                        source = {require('../img/waterplants.png')}></Image>
+              <View style={[{ width: 100 , margin: 40, backgroundColor: "rgb(63, 112, 177)" }]}>
+                <Button 
+                  onPress={this.buttonClickListener2}
+                  title="Water"
+                  color="rgb(63, 112, 177)"
+                />
                </View>
+            </View>
              </View>
 
             {/* Slider */}
              <View style={styles.box}>
              <View style = {styles.inner}>
+             <Text style = {styles.text1}> Fan </Text>
              <Image style={styles.image}
                         source = {require('../img/fan.png')}></Image>
                <Slider style = {styles.slider}
@@ -155,9 +162,18 @@ sliderValue = (value) => {
 
 
              <View style={styles.box}>
-             <View style = {styles.inner}>
+             <View style ={styles.inner}>
+                 <Text style = {styles.text1}> Light </Text>
              <Image style={styles.image}
-                        source = {require('../img/waterplants.png')}></Image>
+                        source = {require('../img/lights.png')}></Image>  
+                <Switch style = {styles.switch}
+                      trackColor={{ false: "#767577", true:  "#6291BF" }}
+                      thumbColor={this.toggleSwitch ? "rgb(63, 112, 177)" : "#fffff"}
+                      onValueChange = {this.toggleSwitch}
+                      value = {this.state.toggled}>
+                  </Switch>
+                  <Text style = {{ paddingBottom: 12, alignContent: 'center', color: "rgb(63, 112, 177)"}}> {this.state.toggled ? 'ON' : 'OFF'}</Text>
+               
                {/* <Switch style = {styles.switch}
                       duration = {200}
                       trackColor={{ false: "#767577", true:  "#6291BF" }}
@@ -171,13 +187,7 @@ sliderValue = (value) => {
                                     alignContent: 'center', 
                                     color: "rgb(63, 112, 177)"}}> 
                                 {this.state.toggle ? 'ON' : 'OFF'}</Text> */}
-                <View style={[{ width: 100 , margin: 40, backgroundColor: "rgb(63, 112, 177)" }]}>
-                <Button 
-                  onPress={this.buttonClickListener}
-                  title="Water"
-                  color="rgb(63, 112, 177)"
-                />
-               </View>
+               
                </View>
                </View>
              </ScrollView>
@@ -187,55 +197,50 @@ sliderValue = (value) => {
 }
 
 const styles = StyleSheet.create({
-  text:{
-    textAlign: 'center',
-    fontSize: 17,
-    alignContent: 'center',
-    fontFamily: 'serif',
-    color: "rgb(63, 112, 177)",
-    paddingBottom: 20
+
+  contentContainer: { 
+      justifyContent: "center",
+      flexWrap:"wrap",
+      flexDirection:"row",
+      backgroundColor: "rgb(208,220,224)",
+      alignItems: 'center',
+      width: '100%'
   },
-  contentContainer: {
-    padding: 10,
-    flexWrap: "wrap",
-    flexDirection: "row",
-    backgroundColor: "rgb(208,220,224)",
-  },
-  box: {
-    width: 165,
-    height: 245,
-    padding: 10,
+    box: {
+      width: 175,
+      height: 340,
+      padding: 10,
   },
   inner:{
-    backgroundColor: 'rgb(185, 198, 210)',
-    alignItems: 'center',
-    height: '100%',
-    borderRadius: 10,
-    paddingTop: 30
+      backgroundColor: 'rgb(185, 198, 210)',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100%',
+      borderRadius: 10,
   },
   scrollView: {
   },
   container:{
-   flex: 1
+    flex: 1
   },
   switch : {
-      marginTop: 37,
+      marginTop: 26,
       alignItems: 'center',
   },
   text1:{
     textAlign: 'center',
-    fontSize: 17,
-    alignContent: 'center',
+    fontSize: 18,
     fontFamily: 'serif',
-    color: "rgb(63, 112, 177)",
+    color: "#4472ca",
+    fontWeight: "bold",
   },
   image:{
     width: 90,
     height: 90,
-    borderRadius: 13,
+    marginTop: 40,
   },
   slider:{
-    width: 120,
+    width: 130,
     height: 10,
     marginTop: 40,
   },
