@@ -5,7 +5,7 @@ import realtimedatabase from './realtimedatabase';
 import Analytics from './analytics';
 import Screen1 from './drawers/screen1';
 import Screen2 from './drawers/screen2';
-
+import Screen3 from './drawers/screen3';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -25,6 +25,7 @@ const HomeStack = createStackNavigator();
 const ControlStack = createStackNavigator();
 const MonitoringStack = createStackNavigator();
 const MaintenanceStack = createStackNavigator();
+const TroubleShootingStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 //Home Page
@@ -123,6 +124,30 @@ const MaintenanceStackScreen = ({navigation}) => (
   </MaintenanceStack.Navigator>
 )
 
+//TroubleShooting
+const TroubleShootingStackScreen = ({navigation}) => ( 
+  <TroubleShootingStack.Navigator>
+    <TroubleShootingStack.Screen name="Contact Us" 
+                             component={Screen3}
+                             options={{headerLeft: () => (
+                    <Icon.Button name ="navicon" 
+                                 size = {29}
+                                 color="rgb(208,220,224)" 
+                                 backgroundColor="rgb(27, 53, 145)" 
+                                 onPress={() => navigation.openDrawer()}>
+                    </Icon.Button>
+                    ),
+                    headerStyle: {
+                        backgroundColor: 'rgb(27, 53, 145)' ,
+                    },
+                    headerTintColor: "rgb(208,220,224)",
+                    headerTitleStyle:{
+                        fontFamily: 'serif'
+                    }
+                    }}/>
+  </TroubleShootingStack.Navigator>
+)
+
 //For Analytics and Realtime Database
  const TopTabs =() => {
     return(
@@ -172,6 +197,8 @@ render (){
                         component={MonitoringStackScreen}/>
           <Drawer.Screen name="Maintenance" 
                         component={MaintenanceStackScreen}/>
+          <Drawer.Screen name="Contact Us" 
+                        component={TroubleShootingStackScreen}/>
         </Drawer.Navigator>
       </NavigationContainer>
     );

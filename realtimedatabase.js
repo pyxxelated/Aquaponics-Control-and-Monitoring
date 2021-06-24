@@ -307,22 +307,6 @@ class realtimedatabase extends Component{
                                       activeBarColor: '#0a369d',
                                     },
                                   ]}/>
-                    
-                          {/* <Speedometer
-                            value={Soil}
-                            totalValue={1000}
-                            size={120}
-                            outerColor="#cfdee7"
-                            internalColor="#4472ca"
-                            showText
-                            //text="50.00"
-                            textStyle={{ color: 'green' }}
-                            showLabels
-                            labelStyle={{ color: 'blue' }}
-                            //labelFormatter={number => `${number}%`}
-                            showPercent
-                            percentStyle={{ color: 'black' }} */}
-                          {/* /> */}
                     </ImageBackground>
                     </View>
                     </View>
