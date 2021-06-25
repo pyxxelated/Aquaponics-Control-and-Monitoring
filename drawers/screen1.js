@@ -13,104 +13,66 @@ class Screen1 extends Component {
 
 //switch1
   toggleSwitch = (value) => {
+    this.setState({toggled: value})
     firebase.database()
       .ref('/Control')
       .update({
-          light: value,
+          light: value ? 1 : 0 ,
       })
-  //   if (value == true){
-     
-  //     firebase.database()
-  //       .ref('/Control')
-  //       .update({
-  //         light: "1",
-  //       })
-  // }
-  // else if (value == false){
-  //   firebase.database()
-  //       .ref('/Control')
-  //       .update({
-  //         light: "0"
-  //         })
-  
-    this.setState({toggled: value})
-    //this.setState(previousState => !previousState);
    
   }
 
 //switch 2
   toggledSwitch = (value) => {
+    this.setState({toggle: value})
     firebase.database()
       .ref('/Control')
       .update({
-          pump: value,
+          pump: value ? 1 : 0 ,
       })
-  //this.setState({sliderValue: value})
-  //   if (value == true){
-     
-  //     firebase.database()
-  //       .ref('/Control')
-  //       .update({
-  //         pump: "1"
-  //         })
-  //       .then(() => console.log('Data set.'));
-  // }
-  //  if (value == false){
-  //   firebase.database()
-  //       .ref('/Control')
-  //       .update({
-  //         pump: "0"
-  //         })
-  //       .then(() => console.log('Data set.'));
-  // }
-    this.setState({toggle: value})
-    //this.setState(previousState => !previousState);
   }
 
   //alert
-buttonClickListener = () => {
-  firebase.database()
-      .ref('/Control')
-      .update({
-          feed: "1",
-      })
-      .then(() => console.log('Pressed.'));
-  alert("The fish has been fed");
-};
+// buttonClickListener = () => {
+//   firebase.database()
+//       .ref('/Control')
+//       .update({
+//           feed: "1",
+//       })
+//       .then(() => console.log('Pressed.'));
+//   alert("The fish has been fed");
+// };
 
-onPressFunction = () => {
-  setTimeout(function () {
-  
-
-  }, 5000);
+onPressFunction = (value) => {
   firebase.database()
   .ref('/Control')
   .update({
-      feedfish: "1",
-  })
-  console.log('Pressable Clicked !!!');
-  this.setState({pressed: true})
+      feedfish: '1', 
+  }
+  )
+ 
+  alert("The fish has been fed")
+ this.setState({pressed: value})
 }
 
-
-
-sliderValue = (value) => {
+state ={
+  fanValue: false,
+  toggled: false,
+  toggle: false,
+}
+fanSwitch = (value) => {
+  this.setState({fanValue: value})
   firebase.database()
-  .ref('/Control')
-  .update({
-      fan: value,
-  })
-  this.setState({sliderValue: value})
-
-}
+    .ref('/Control')
+    .update({
+        fan: value ? 1 : 0,
+    })
+  }
 
 
   constructor(props) {
       super(props);
       this.state = {
-        sliderValue: '',
-        toggle: '',
-        toggled: '',
         data: '',
       }
     }
@@ -139,10 +101,9 @@ sliderValue = (value) => {
                       source = {require('../img/pet-feeder.png')}></Image>
                 {/* <View style={[{ width: 90 , margin: 24, backgroundColor: "rgb(63, 112, 177)" }]}> */}
                 <Pressable onPress={this.onPressFunction}
-                           unstable_pressDelay = {1000}
                            style={({ pressed }) => [{backgroundColor: pressed ? '#4E79B2' : 'rgb(63, 112, 177)',
                                                     borderRadius: 5,}, styles.button]}>
-                             <Text style={styles.text2}>{this.state.pressed ? 'Pressed!' : 'Press Me'}</Text> 
+                          {({ pressed }) =>   <Text style={styles.text2}>{pressed ? 'Pressed' : 'Press Me'}</Text> }
                            
                  </Pressable>
                 {/* <Button
@@ -165,7 +126,7 @@ sliderValue = (value) => {
                       thumbColor={this.toggledSwitch ? "rgb(63, 112, 177)" : "#fffff"}
                       onValueChange = {this.toggledSwitch}
                       disabled = {true}
-                      value = {pump}>
+                      value = {this.state.toggle}>
                   </Switch>
                   <Text style = {{ paddingBottom: 12, alignContent: 'center', color: "rgb(63, 112, 177)"}}> {pump ? 'ON' : 'OFF'}</Text>
             </View>
@@ -177,7 +138,15 @@ sliderValue = (value) => {
              <Text style = {styles.text1}> Fan </Text>
              <Image style={styles.image}
                         source = {require('../img/fan.png')}></Image>
-               <Slider style = {styles.slider}
+                  <Switch style = {styles.switch}
+                      trackColor={{ false: "#767577", true:  "#6291BF" }}
+                      thumbColor={this.fanSwitch ? "rgb(63, 112, 177)" : "#fffff"}
+                      onValueChange = {this.fanSwitch}
+                      value = {this.state.fanValue}>
+                  </Switch>
+                  <Text style = {{ paddingBottom: 12, alignContent: 'center', color: "rgb(63, 112, 177)"}}> {fan ? 'ON' : 'OFF'}</Text>
+            
+               {/* <Slider style = {styles.slider}
                   minimumValue={0}
                   maximumValue={1000}
                   minimumTrackTintColor="#6291BF"
@@ -189,7 +158,7 @@ sliderValue = (value) => {
                 />
                 <Text style = {{ paddingTop: 12, alignContent: 'center', color: "rgb(63, 112, 177)"}}>
                      {fan}
-                  </Text>
+                  </Text> */}
                </View>
              </View>
 
@@ -203,7 +172,7 @@ sliderValue = (value) => {
                       trackColor={{ false: "#767577", true:  "#6291BF" }}
                       thumbColor={this.toggleSwitch ? "rgb(63, 112, 177)" : "#fffff"}
                       onValueChange = {this.toggleSwitch}
-                      value = {light}>
+                      value = {this.state.toggled}>
                   </Switch>
                   <Text style = {{ paddingBottom: 12, alignContent: 'center', color: "rgb(63, 112, 177)"}}> {light ? 'ON' : 'OFF'}</Text>
                </View>
